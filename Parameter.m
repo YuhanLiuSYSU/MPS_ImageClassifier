@@ -14,7 +14,7 @@ Para.ReSampleTime=8; % iteration time where the samples are retaken
 Para.delta_pert=1; % A small number that controls the pertubation on the environment tensor
 Para.dTimeTest=Para.ReSampleTime; % In how many iteration time, the testing accuracy is calculated
 
-Para.CutNum=30; % 0 or >Para.L^2: do not cut; N: cut to N sites
+Para.CutNum=0; % 0 or >Para.L^2: do not cut; N: cut to N sites
 Para.IsReorder=0; % 0: do not reorder; 1: reorder and update orders; 2: reorder by the saved order
 Para.UpdateOrderThreshold=30;
 Para.IsFourierMaxNormalize=1; % If normalize each DCT image by its maximum; Only for DCT images
