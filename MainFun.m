@@ -25,6 +25,7 @@ Nsample=Para.NumberSample; % number of samples in each time
 Npixel=Para.L^2;ONpixel=Npixel;
 % WrongSamples=[];
 Sequence0=SequenceZigZag(Para.L);
+ReorderC=0;
 
 %% Load dataset
 [imgs,labels,imgs_t,labels_t]=ReadTrainAndTest(Para,Sequence0);
@@ -104,6 +105,7 @@ Sequence0=SequenceZigZag(Para.L);
              NewOrder=NewOrder(1:Npixel);
              TrainImgs=TrainImgs(1:Npixel);
              Para.IsReorder=2;
+             ReorderC=1;
          end
          
      elseif(Para.IsReorder==2)
@@ -129,7 +131,7 @@ Sequence0=SequenceZigZag(Para.L);
      end     
      
      %% ======== Generate Initial MPS and vectors ========
-     IsIniMPS = (tsample==1 && (~flagdataMPS || (flagdataMPS && ~Para.IsLoad)));
+     IsIniMPS = ((tsample==1||(tsample==2&&ReorderC==1)) && (~flagdataMPS || (flagdataMPS && ~Para.IsLoad)));
      if(IsIniMPS)
          % Initialize a new MPS
          fprintf('Randomly initialize the MPS. \n')
@@ -144,8 +146,7 @@ Sequence0=SequenceZigZag(Para.L);
          [VectorL,VectorR]=Initial_Vector( MPS,TrainImgs,TrainLabels,Npixel);
          delta=Para.delta_pert;
      else
-         % Only re-sampling
-         
+         % Only re-sampling      
          [VectorL,VectorR]=Initial_Vector( MPS,TrainImgs,TrainLabels,Npixel);
          delta=Para.delta_pert;
      end
