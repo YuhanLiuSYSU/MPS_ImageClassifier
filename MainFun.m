@@ -4,7 +4,7 @@
 tic % Counting computational time
 
 if(numel(varargin)==1)
-      Para=varargin{1};
+%      Para=varargin{1};
 else
     Para=Parameter;
 end
@@ -23,7 +23,6 @@ test_overlap=zeros(Para.ReSampleTime,1);
 time_test=0;
 Nsample=Para.NumberSample; % number of samples in each time
 Npixel=Para.L^2;ONpixel=Npixel;
-% WrongSamples=[];
 Sequence0=SequenceZigZag(Para.L);
 ReorderC=0;
 
@@ -37,7 +36,7 @@ ReorderC=0;
          Para.Angel,Para.Fourier*Para.IsFourierMaxNormalize);
      
      
-     %% Consider reordering & cutting. Note while cutting, Para.IsReorder=2
+     %% Consider reordering & cutting.
      if(Para.Fourier)
          EXPorder=[Para.ResultPath,'NewOrder(',num2str(Para.ImgsClasses(1)),'-',num2str(Para.ImgsClasses(2)),')DCT.mat'];
      else
@@ -87,8 +86,6 @@ ReorderC=0;
                  NewOrder=(1:Npixel).';
              end
          else
-            % fprintf('Calculating NewOrder ... \n');
-            % [~,NewOrder1]=sort(SEE,'descend');
              dOrder=sum(NewOrder~=(1:Npixel).');
              if(dOrder>Para.UpdateOrderThreshold)
                  fprintf(['The change of NewOrder is ',num2str(dOrder),'>',num2str(Para.UpdateOrderThreshold),'. Updating NewOrder ... \n']);                 
@@ -101,7 +98,13 @@ ReorderC=0;
          end
          
          if(Para.IsCut&&tsample>1)
-             Npixel=Para.CutNum;
+             if Para.CutFix==1
+                Npixel=Para.CutNum;
+             else                 
+                Npixel=FindCut(BEE);
+                Para.CutNum=Npixel;
+                fprintf('# of remaining sites: %d\n',Npixel);
+             end
              NewOrder=NewOrder(1:Npixel);
              TrainImgs=TrainImgs(1:Npixel);
              Para.IsReorder=2;
@@ -272,6 +275,7 @@ ReorderC=0;
      end
  end
 toc
+fprintf('Done! ¨r£¨£þ¨Œ£þ£©¨q  \n\n');
  end
  
 %% Find zig-zag sequence

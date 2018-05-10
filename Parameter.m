@@ -4,18 +4,19 @@ Para.ImgsClasses=[0,2]; %distinguish classes
 Para.chi=16;
 Para.d=2;
 
-Para.Fourier=0;
-Para.Angel=[0,0.5]; % *pi/2 ; range of angel in the feature  % real space[0,0.5]  %dct space[0,2.5]
+Para.Fourier=1;
+Para.Angel=[0,2.5]; % *pi/2 ; range of angel in the feature  % real space[0,0.5]  %dct space[0,2.5]
 Para.NumberSample=500;
 Para.updatetime=4; % iteration time with fixed samples
 Para.updatetime0=1; % minimal update time
 Para.BreakEps=1e-3;
-Para.ReSampleTime=8; % iteration time where the samples are retaken
+Para.ReSampleTime=4; % iteration time where the samples are retaken
 Para.delta_pert=1; % A small number that controls the pertubation on the environment tensor
 Para.dTimeTest=Para.ReSampleTime; % In how many iteration time, the testing accuracy is calculated
 
-Para.CutNum=0; % 0 or >Para.L^2: do not cut; N: cut to N sites
-Para.IsReorder=0; % 0: do not reorder; 1: reorder and update orders; 2: reorder by the saved order
+Para.CutNum=30; % 0 or >Para.L^2: do not cut; N: cut to N sites
+Para.IsReorder=1; % 0: do not reorder; 1: reorder and update orders; 2: reorder by the saved order
+Para.CutFix=0; % 0: Find the CutNum according to BEE.(only applicable when Para.IsReorder=1) 1:Use Para.CutNum
 Para.UpdateOrderThreshold=30;
 Para.IsFourierMaxNormalize=1; % If normalize each DCT image by its maximum; Only for DCT images
 Para.IsCorrectNorm=1; % If correct the normalization factor according to the inner product
