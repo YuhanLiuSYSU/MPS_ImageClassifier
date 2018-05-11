@@ -4,7 +4,7 @@
 tic % Counting computational time
 
 if(numel(varargin)==1)
-%      Para=varargin{1};
+    Para=varargin{1};
 else
     Para=Parameter;
 end
@@ -275,7 +275,7 @@ ReorderC=0;
      end
  end
 toc
-fprintf('Done! ¨r£¨£þ¨Œ£þ£©¨q  \n\n');
+fprintf('Done! Â¨rÂ£Â¨Â£Ã¾Â¨ÂŒÂ£Ã¾Â£Â©Â¨q  \n\n');
  end
  
 %% Find zig-zag sequence
