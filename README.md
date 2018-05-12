@@ -12,14 +12,15 @@ MATLAB code for our project "Learning architectures based on quantum entanglemen
 	1.2 As shown in the paper, we mainly discuss four cases: Real space, Real space + Reorder/Cut, Frequency space, Frequency space + Reorder/Cut. This can be controlled by these parameters: Para.Fourier; Para.IsReorder; Para.CutNum. 
   
 	1.3 The resulting data are stored in Para.EXP. You may want to change it as you wish.
- 
-2. The MATLAB package "Tensor_Toolbox"[2] should be added to your MATLAB path. 
- 
-3. Run MainFun.m to execute the code. If you want to loop over some parameters, you may look into the files in "RunLoop". The files in "PlotKit" can help you get some nice plots from your data.
+  
+2. Run MainFun.m to execute the code. If you want to loop over some parameters, you may look into the files in "RunLoop". The files in "PlotKit" can help you get some nice plots from your data.
 
-4. Enjoy :)
+3. Enjoy :)
 
+Note: The file readMNIST.m is contributed by Siddharth Hegde[2] with modification. For some parts of the code, one can consider MATLAB package "Tensor_Toolbox"[3]. In the current version this toolbox is not used.
 
 [1] Yann LeCun, Corinna Cortes and Christopher J.C. Burges. THE MNIST DATABASE of handwritten digits, Available online. URL: http://yann.lecun.com/exdb/mnist/
 
-[2] Brett W. Bader, Tamara G. Kolda and others. MATLAB Tensor Toolbox Version 2.6, Available online, February 2015. URL: http://www.sandia.gov/~tgkolda/TensorToolbox/.
+[2] Siddharth Hegde. readMNIST, Available online. URL: http://www.codeforge.com/read/242556/readMNIST.m__html
+
+[3] Brett W. Bader, Tamara G. Kolda and others. MATLAB Tensor Toolbox Version 2.6, Available online, February 2015. URL: http://www.sandia.gov/~tgkolda/TensorToolbox/.
